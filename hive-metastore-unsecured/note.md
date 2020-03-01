@@ -66,7 +66,6 @@ While Metastore is started you can start standalone Hive CLI with:
 cd /root/Fred_wu/docker-images-master/hive-metastore-unsecured && docker-compose exec metastore hive
 
 
-
 # 建立表
 create table test_data(a bigint) 
 date DATE,
