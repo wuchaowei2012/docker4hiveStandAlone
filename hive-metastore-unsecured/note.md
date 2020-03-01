@@ -1,4 +1,9 @@
 
+export PYSPARK_PYTHON=python3
+export PYSPARK_DRIVER_PYTHON=ipython
+export SPARK_HOME=/root/Fred_wu/spark-2.4.5-bin-hadoop2.6
+export HADOOP_HOME=/root/Fred_wu/hadoop-2.7.7
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 
 # 0 启动 docker 
@@ -8,6 +13,7 @@ export HIVE_METASTORE_JDBC_URL=jdbc:postgresql://postgres.docker.starburstdata.c
 export HIVE_METASTORE_DRIVER="org.postgresql.Driver"
 export HIVE_METASTORE_USER=hivemetastore
 export HIVE_METASTORE_PASSWORD=hivemetastore
+
 cd /root/Fred_wu/docker-images-master/hive-metastore-unsecured && docker-compose up metastore mysql
 
 ## Running standalone Hive Metastore (with Postgres)
@@ -27,16 +33,9 @@ cd /root/Fred_wu/docker-images-master/hive-metastore-unsecured && docker-compose
 
 # 2 开始 spark thrift服务
 
-export PYSPARK_PYTHON=python3
-export PYSPARK_DRIVER_PYTHON=ipython
-export SPARK_HOME=/root/Fred_wu/spark-2.4.5-bin-hadoop2.6
-export HADOOP_HOME=/root/Fred_wu/hadoop-2.7.7
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-
 $SPARK_HOME/sbin/start-thriftserver.sh –driver-java-options "Dhive.metastore.uris=thrift://localhost:9083"
 
 $SPARK_HOME/sbin/start-thriftserver.sh --executor-cores 4 --total-executor-cores 4 --master local[4]
-
 
 
 # 3 开启 hive 支持
@@ -57,8 +56,8 @@ spark.sql("show databases").show()
 
 
 # 4 Stopping the Hive Metastore and clean data
-<!-- docker-compose down  (小心使用)
-docker-compose down --volumes  (小心使用) -->
+docker-compose down  (小心使用)
+docker-compose down --volumes  (小心使用)
 
 
 # 5 hive cli
