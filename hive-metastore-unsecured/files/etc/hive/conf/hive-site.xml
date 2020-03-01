@@ -24,7 +24,7 @@
 
     <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>file:///root/</value>
+        <value>file:///root/Fred_wu/hivemeta</value>
     </property>
 
     <property>

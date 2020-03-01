@@ -18,7 +18,7 @@
 # Please refer to your agreement(s) with Starburst for further information.
 ################################################################################
 
-FROM centos4hive2
+FROM starburstdata/centos:7.5.1804
 
 RUN yum -y install \
         java-1.8.0-openjdk \
