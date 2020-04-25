@@ -33,9 +33,10 @@ cd /root/Fred_wu/docker-images-master/hive-metastore-unsecured && docker-compose
 
 # 2 开始 spark thrift服务
 
-$SPARK_HOME/sbin/start-thriftserver.sh –driver-java-options "Dhive.metastore.uris=thrift://localhost:9083"
+<!-- $SPARK_HOME/sbin/start-thriftserver.sh  –driver-java-options "Dhive.metastore.uris=thrift://localhost:9083" -->
+export SPARK_HOME=/root/Fred_wu/spark-2.4.5-bin-hadoop2.6
 
-$SPARK_HOME/sbin/start-thriftserver.sh --executor-cores 4 --total-executor-cores 4 --master local[4]
+$SPARK_HOME/sbin/start-thriftserver.sh --executor-cores 8 --total-executor-cores 8 --master local[8] –driver-java-options "Dhive.metastore.uris=thrift://localhost:9083"
 
 
 # 3 开启 hive 支持
@@ -62,6 +63,11 @@ docker-compose down --volumes  (小心使用)
 
 # 5 hive cli
 While Metastore is started you can start standalone Hive CLI with:
+
+export HIVE_METASTORE_JDBC_URL=jdbc:postgresql://postgres.docker.starburstdata.com/hivemetastore
+export HIVE_METASTORE_DRIVER="org.postgresql.Driver"
+export HIVE_METASTORE_USER=hivemetastore
+export HIVE_METASTORE_PASSWORD=hivemetastore
 
 cd /root/Fred_wu/docker-images-master/hive-metastore-unsecured && docker-compose exec metastore hive
 

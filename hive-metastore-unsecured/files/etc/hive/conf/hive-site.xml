@@ -17,14 +17,10 @@
   EVEN IF STARBURST HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <configuration>
-    <!-- <property>
-        <name>hive.metastore.warehouse.dir</name>
-        <value>file:///no/default/location/defined/please/create/new/schema/with/location/explicitly/set/</value>
-    </property> -->
 
     <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>file:///root/Fred_wu/hivemeta</value>
+        <value>/root/Fred_wu/hivemeta</value>
     </property>
 
     <property>

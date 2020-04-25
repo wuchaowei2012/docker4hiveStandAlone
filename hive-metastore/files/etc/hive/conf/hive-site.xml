@@ -19,7 +19,7 @@
 <configuration>
     <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>file:///no/default/location/defined/please/create/new/schema/with/location/explicitly/set/</value>
+        <value>/root/Fred_wu/hivemetaSafe</value>
     </property>
 
     <property>

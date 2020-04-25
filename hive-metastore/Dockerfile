@@ -24,6 +24,7 @@ RUN yum -y install \
         java-1.8.0-openjdk \
         net-tools \
         wget \
+        vim \
         && \
     yum clean all && \
     rm -rf /var/cache/yum && \
